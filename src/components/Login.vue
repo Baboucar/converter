@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
      <h2>Login</h2>
      <div>
          <input type="text" v-model="email" name="" id="first" placeholder="Email">
@@ -40,6 +40,18 @@ import firebase from 'firebase';
     }
 </script>
 
-<style scoped>
+<style >
+ input{
+     margin-top: 1rem;
 
+ }
+ button{
+     padding:1rem;
+     width: 10rem;
+     margin-top:1rem;
+     display: block;
+     background: #1c9963;
+     border:none;
+     border-radius: 5px;
+ }
 </style>

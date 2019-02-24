@@ -1,26 +1,42 @@
 <template>
-    <div>
+    <div class="container">
   <h1>Welcome</h1>
  
- <h2>{{price}}</h2>
+ <h2> {{cementPrice}}</h2>
+ 
   <form  class="flex">
-  <div>
+      
+ <div >
+     <label class="label" >Select Cement Type</label>
+
+          <select  @change="onChange($event)" v-model="test">
+              <option :value="price" >Regular</option>
+              <option  :value="secondPrice" >Second Option</option>
+              <option :value="thirdPrice" >Third Option</option>
+          </select>
+      </div>
+  <div class="form-group">
+          <label class="label" for="">BAGS</label>
        <input type="text" name="" id="" placeholder="number of bags" v-model="numberofBags">
   </div>
-  <div>
-       <label for="">GMD</label>
+
+  <div  class="form-group">
+       <label class="label" for="">GMD</label>
         <input type="text" name="" id="" v-model="calclatePriceInGMD" disabled>
    </div>
-   <div>
-       <label for="">USD</label>
+
+   <div  class="form-group">
+       <label class="label" for="">USD</label>
         <input type="text" name="" id="" v-model=" eurotoUSD"  disabled>
    </div>
-    <div>
-       <label for="">POUNDS</label>
+
+    <div  class="form-group">
+       <label  class= "label" for="">POUNDS</label>
         <input type="text" name="" id=""  v-model="euroToPounds" disabled>
    </div>
-    <div>
-       <label for="">EURO</label>
+
+    <div  class="form-group">
+       <label class="label" for="">EURO</label>
         <input type="text" name="" id="" v-model="euroToGMD" disabled>
       
    </div>
@@ -37,16 +53,19 @@ import axios from 'axios';
         return{
              numberofBags: 0,
                 rate: [],
-                cementPrice:this.theprice,
+                cementPrice:0,
                 currentDalasis: 0,
                 currentDollers:0,
                 currentPounds:0,
+                test: ''
              
         }
         },
      computed:{
             ...mapState([
-             'price'
+             'price',
+              'secondPrice',
+              'thirdPrice'
             ]) ,
 
         calclatePriceInGMD(){
@@ -77,6 +96,9 @@ import axios from 'axios';
         })
         .catch();
     },
+     onChange(event){
+         this.cementPrice = event.target.value
+     }
      },
        created:function(){
          
@@ -89,12 +111,43 @@ import axios from 'axios';
     }
 </script>
 
-<style scoped>
-.flex{
-    display: flex;
+<style >
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
 input{
-    height: 30px;
+    width:100%;
+    border-radius: 5px;
+    border:none;
+    border:2px solid #eee;
+    font-size: 1rem;
+
 }
+.label{
+ display: block;
+ padding:.5rem;
+ font-weight: bold;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media(min-width:720px){
+    .flex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10rem;
+}
+}
+input,select{
+    height: 40px;
+    font-size: 1rem;
+}
+
 
 </style>

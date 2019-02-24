@@ -20,8 +20,8 @@ const router = new  Router({
       path:'/updatePrice',
       name:'updatePrice',
       component:UpdatePrice,
-       meta: {
-         requiresAuth: true
+        meta: {
+          requiresAuth: true
        }
     },
     {
